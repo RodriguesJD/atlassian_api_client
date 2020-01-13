@@ -11,6 +11,12 @@ me = os.environ["JIRA_MY_ACCOUNT_ID"]
 
 
 def get_all_users():
+    """
+    Use restAPI to get a list of all google users.
+    Returns:
+        list: All users found in g suite.
+
+    """
     all_user_data = []
     start_int = 0
     headers = {"Accept": "application/json"}
