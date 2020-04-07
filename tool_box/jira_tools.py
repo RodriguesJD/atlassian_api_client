@@ -23,10 +23,8 @@ def get_all_users():
     while isinstance(start_int, int):
         url = f'{base_url}/rest/api/2/users/search?username=.&startAt={start_int}&maxResults=50'
         response = requests.get(url=url, headers=headers, auth=auth)
-        print(response.json())
         if len(response.text) > 2:
             for user in response.json():
-                print(user)
                 all_user_data.append(user)
 
             start_int += 50
