@@ -51,6 +51,16 @@ def find_user_by_email(user_email):
     return response
 
 
+def find_user_permissions(account_id):
+    # TODO this is not done! Need elevated permission to try.
+    headers = {"Accept": "application/json"}
+    query = {'accountId': account_id}
+    auth = HTTPBasicAuth(username, key)
+    url = f'{base_url}/rest/api/2/permissions'
+    response = requests.get(url=url, headers=headers, params=query, auth=auth).json()
+    return response
+
+
 def delete_user_by_id(account_id):
     auth = HTTPBasicAuth(username, key)
     url = f'{base_url}/rest/api/2/user'
