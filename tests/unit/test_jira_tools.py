@@ -60,6 +60,12 @@ def test_get_all_groups():
         isinstance(group_name, str)
 
 
+def test_users_in_group_by_group_name():
+    group_name = 'itsupport'
+    group_members = jira_tools.users_in_group_by_group_name(group_name)
+    isinstance(group_members, list)
+    for member in group_members:
+        isinstance(member, dict)
 
 
 def test_user_managment():

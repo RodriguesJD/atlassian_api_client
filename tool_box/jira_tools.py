@@ -126,6 +126,35 @@ def get_all_groups():
     return response_with_total_groups
 
 
+def users_in_group_by_group_name(group_name):
+    group_users = []
+    headers = {"Accept": "application/json"}
+    auth = HTTPBasicAuth(username, key)
+    url = f'{base_url}/rest/api/2/group/member?groupname={group_name}'
+    response = requests.get(url=url, headers=headers, auth=auth).json()
+
+    for user in response['values']:
+        group_users.append(user)
+
+    response_keys = response.keys()
+    if "nextPage" in response_keys:
+        next_page = response["nextPage"]
+
+        need_to_get_more_members = True
+        while need_to_get_more_members:
+            response = requests.get(url=next_page, headers=headers, auth=auth).json()
+            response_keys = response.keys()
+            if "nextPage" not in response_keys:
+                need_to_get_more_members = False
+            else:
+                next_page = response["nextPage"]
+
+            for user in response['values']:
+                group_users.append(user)
+
+    return group_users
+
+
 def user_managment(account_id):
     headers = {
         "Accept": "application/json",
