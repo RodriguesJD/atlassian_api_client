@@ -119,7 +119,11 @@ def get_all_groups():
     auth = HTTPBasicAuth(username, key)
     url = f'{base_url}/rest/api/2/groups/picker'
     response = requests.get(url=url, headers=headers, auth=auth).json()
-    pprint(response)
+    total_group = response["total"]
+    url_with_total = f"{url}?maxResults={total_group}"
+    response_with_total_groups = requests.get(url=url_with_total, headers=headers, auth=auth).json()
+
+    return response_with_total_groups
 
 
 def user_managment(account_id):

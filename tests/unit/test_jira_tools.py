@@ -45,7 +45,21 @@ def test_get_user_property():
 
 
 def test_get_all_groups():
-    pass
+    all_groups = jira_tools.get_all_groups()
+    groups = all_groups['groups']
+    isinstance(all_groups, dict)
+    isinstance(groups, list)
+    for group in groups:
+        group_id = group['groupId']
+        isinstance(group_id, str)
+        group_html = group['html']
+        isinstance(group_html, str)
+        group_labels = group['labels']
+        isinstance(group_labels, list)
+        group_name = group['name']
+        isinstance(group_name, str)
+
+
 
 
 def test_user_managment():
