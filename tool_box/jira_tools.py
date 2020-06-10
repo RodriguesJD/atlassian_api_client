@@ -51,12 +51,11 @@ def find_user_by_email(user_email):
     return response
 
 
-def find_user_permissions(account_id):
-    # TODO this is not done! Need elevated permission to try.
+def find_users_groups_by_account_id(account_id):
     headers = {"Accept": "application/json"}
-    query = {'accountId': account_id}
     auth = HTTPBasicAuth(username, key)
-    url = f'{base_url}/rest/api/2/permissions'
+    query = {'accountId': account_id}
+    url = f'{base_url}/rest/api/2/user/groups?accountId={account_id}'
     response = requests.get(url=url, headers=headers, params=query, auth=auth).json()
     return response
 
