@@ -2,7 +2,10 @@ import os
 import sys
 sys.path.insert(0, os.getcwd())
 
-from tool_box import jira_tools
+try:
+    from tool_box import jira_tools
+except ModuleNotFoundError:
+    from atlassian_api_client.tool_box import jira_tools
 
 
 def test_get_all_users():
