@@ -30,3 +30,6 @@ def create_ticket(service_desk_id, request_type_id, dict_values):
     return service_desk_request().create_customer_request(service_desk_id=service_desk_id, request_type_id=request_type_id, values_dict=dict_values)
 
 
+def list_tickets(service_desk_id, queue_id):
+    return service_desk_request().get_issues_in_queue(service_desk_id=service_desk_id, queue_id=queue_id)
+
