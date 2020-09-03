@@ -1,4 +1,6 @@
 import os
+import sys
+sys.path.insert(0, os.getcwd())
 
 from tool_box import jira_tools
 
