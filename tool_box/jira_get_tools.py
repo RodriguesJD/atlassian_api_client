@@ -155,6 +155,15 @@ def users_in_group_by_group_name(group_name):
     return group_users
 
 
+def find_group_by_name(group_name):
+    headers = {"Accept": "application/json"}
+    auth = HTTPBasicAuth(username, key)
+    url = f'{base_url}/rest/api/2/group/member?groupname={group_name}'
+    response = requests.get(url=url, headers=headers, auth=auth).json()
+
+    return response
+
+
 def user_managment(account_id):
     headers = {
         "Accept": "application/json",
