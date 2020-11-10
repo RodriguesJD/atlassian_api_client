@@ -5,8 +5,8 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 username = os.environ["WORK_EMAIL"]
-base_url = os.environ["JIRA_BASE_URL"]
-key = os.environ["JIRA_KEY"]
+base_url = os.environ["DEV_JIRA_BASE_URL"]
+key = os.environ["DEV_JIRA_KEY"]
 
 
 def get_all_users():
