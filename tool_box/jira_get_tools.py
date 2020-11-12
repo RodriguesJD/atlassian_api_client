@@ -164,6 +164,9 @@ def find_issue_by_id(issue_id):
 
 # TODO move this to its own module jira_delete_tools
 def delete_user_by_id(account_id):
+    username = os.environ["WORK_EMAIL"]
+    key = os.environ["DEV_JIRA_KEY"]
+    base_url = os.environ["DEV_JIRA_BASE_URL"]
     auth = HTTPBasicAuth(username, key)
     url = f'{base_url}/rest/api/2/user'
     query = {'accountId': account_id}
