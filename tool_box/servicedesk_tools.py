@@ -1,12 +1,16 @@
 import os
 from pprint import pprint
+import json
+import requests
+from requests.auth import HTTPBasicAuth
 
 from atlassian import ServiceDesk
 
 
-base_url = os.environ["JIRA_BASE_URL"]
+base_url = os.environ["DEV_JIRA_BASE_URL"]
 username = os.environ["WORK_EMAIL"]
-key = os.environ["JIRA_KEY"]
+key = os.environ["DEV_JIRA_KEY"]
+
 
 
 def service_desk_request():
@@ -33,3 +37,42 @@ def create_ticket(service_desk_id, request_type_id, dict_values):
 def list_tickets(service_desk_id, queue_id):
     return service_desk_request().get_issues_in_queue(service_desk_id=service_desk_id, queue_id=queue_id)
 
+
+def does_org_exist(org_name):
+    url = f"{base_url}/rest/servicedeskapi/organization/search?query={org_name}"
+
+    headers = {
+        "Accept": "application/json"
+    }
+
+    response = requests.request(
+        "GET",
+        url,
+        headers=headers
+    )
+
+    print(json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": ")))
+
+
+def add_user_to_org(account_id, org_id):
+    url = f"{base_url}/rest/servicedeskapi/organization/{org_id}/user"
+
+    headers = {
+        "Accept": "application/json"
+    }
+
+    payload = json.dumps({
+        "accountIds": [
+            account_id
+        ],
+        "usernames": []
+    })
+
+    response = requests.request(
+        "POST",
+        url,
+        data=payload,
+        headers=headers
+    )
+
+    return json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": "))
