@@ -20,7 +20,7 @@ def test_find_user_by_account_id():
 def test_find_user_by_email():
     pass
 
-
+# todo break theese tests into get and post tests
 def test_find_users_groups_by_account_id():
     account_id = os.environ["DEV_MY_JIRA_ACCOUNT_ID"]
     users_groups = jira_get_tools.Users().find_users_groups_by_account_id(account_id).json()
