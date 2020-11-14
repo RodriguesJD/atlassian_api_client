@@ -10,7 +10,8 @@ from atlassian import ServiceDesk
 class Organization(GetAtlassian):
     url = "/rest/servicedeskapi/organization"
 
-    def get_all_organizations_as_a_list(self):
+    def get_first_page_of_orgs(self):
+        # Todo add pagination to this func and then change the name to get_all_orgs_as_list
         self.url = f"{self.url}"
         response = self.get_atlassian()
         return response
