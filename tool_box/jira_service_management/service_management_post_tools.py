@@ -1,5 +1,7 @@
-from tool_box.atlassian_post_tools import PostAtlassian
-
+try:
+    from tool_box.atlassian_post_tools import PostAtlassian
+except ModuleNotFoundError:
+    from atlassian_api_client.
 
 class OrganizationPost(PostAtlassian):
     url = "/rest/servicedeskapi/organization"

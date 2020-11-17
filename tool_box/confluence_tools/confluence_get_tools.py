@@ -1,4 +1,7 @@
-from tool_box.atlassian_get_tools import GetAtlassian
+try:
+    from tool_box.atlassian_get_tools import GetAtlassian
+except ModuleNotFoundError:
+    from atlassian_api_client.tool_box.atlassian_get_tools import GetAtlassian
 
 
 class Content(GetAtlassian):

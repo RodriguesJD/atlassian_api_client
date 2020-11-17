@@ -1,5 +1,7 @@
-from tool_box.jira_tools.jira_get_tools import GetAtlassian
-
+try:
+    from tool_box.jira_tools.jira_get_tools import GetAtlassian
+except ModuleNotFoundError:
+    from atlassian_api_client.
 
 class Organization(GetAtlassian):
     url = "/rest/servicedeskapi/organization"

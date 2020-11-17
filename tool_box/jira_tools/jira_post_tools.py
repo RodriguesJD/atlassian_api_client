@@ -4,7 +4,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 import json
 import os
-
+# todo refactor page
 
 username = os.environ["WORK_EMAIL"]
 base_url = os.environ["DEV_JIRA_BASE_URL"]

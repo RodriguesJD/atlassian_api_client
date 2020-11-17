@@ -1,6 +1,9 @@
 import os
 from pprint import pprint
-from tool_box.atlassian_get_tools import GetAtlassian
+try:
+    from tool_box.atlassian_get_tools import GetAtlassian
+except ModuleNotFoundError:
+    from atlassian_api_client.tool_box.atlassian_get_tools import GetAtlassian
 
 
 class Users(GetAtlassian):
