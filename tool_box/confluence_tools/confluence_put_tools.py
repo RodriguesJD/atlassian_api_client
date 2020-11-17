@@ -1,5 +1,5 @@
 import json
-try
+try:
     from tool_box.atlassian_put_tools import PutAtlassian
 except ModuleNotFoundError:
     from atlassian_api_client.tool_box.atlassian_put_tools import PutAtlassian
