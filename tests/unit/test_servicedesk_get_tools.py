@@ -1,6 +1,6 @@
 import os
 
-from tool_box.servicedesk_get_tools import Organization
+from tool_box.jira_service_management.service_management_get_tools import Organization
 
 
 class TestOrganization:
@@ -17,5 +17,9 @@ class TestOrganization:
 
     def test_find_customers_in_an_org(self):
         org_id = os.environ["DEV_ORG_ID"]
-        find_customers_in_org_json = self.org_api().find_customers_in_an_org(org_id=org_id)
+        find_customers_in_org_json = self.org_api().find_customers_in_an_org(org_id=org_id).json()
         assert isinstance(find_customers_in_org_json, dict)
+
+        get_request_url = f'https://ripplelabs-dev.atlassian.net/rest/servicedeskapi/organization/{org_id}/user'
+        # Confirm you are using the correct url for the api get call.
+        assert find_customers_in_org_json["_links"]["self"] == get_request_url

@@ -1,10 +1,4 @@
-from pprint import pprint
-import json
-
-
-from tool_box.jira_get_tools import GetAtlassian
-
-from atlassian import ServiceDesk
+from tool_box.jira_tools.jira_get_tools import GetAtlassian
 
 
 class Organization(GetAtlassian):
@@ -21,12 +15,8 @@ class Organization(GetAtlassian):
         response = self.get_atlassian()
         return response
 
-    def get_orgs(self):
-        self.url = f"{self.url}"
-        response = self.get_atlassian()
-        return response
-
-
-
+    def find_org_by_searching_all_service_desks(self):
+        # TODO find out which service desk id we are using. Shoold i look accross all ids?
+        pass
 
 
