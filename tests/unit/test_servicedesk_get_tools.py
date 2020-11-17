@@ -7,7 +7,7 @@ class TestOrganization:
 
     org_api = Organization
 
-    def test_et_first_page_of_orgs(self):
+    def test_get_first_page_of_orgs(self):
         all_orgs_json = self.org_api().get_first_page_of_orgs().json()
         assert isinstance(all_orgs_json, dict)
 
