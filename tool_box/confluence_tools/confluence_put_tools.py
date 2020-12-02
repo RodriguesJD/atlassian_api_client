@@ -4,6 +4,7 @@ try:
 except ModuleNotFoundError:
     from atlassian_api_client.tool_box.atlassian_put_tools import PutAtlassian
 
+
 class UpdateContent(PutAtlassian):
     url = "/wiki/rest/api/content"
 

@@ -13,6 +13,7 @@ class PostAtlassian:
     data = None
 
     def post_atlassian(self):
+        print(self.url)
         return requests.post(f"{self.base_url}{self.url}",
                              auth=HTTPBasicAuth(self.username, self.key),
                              headers={"Content-Type": "application/json"},

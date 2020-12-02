@@ -1,7 +1,8 @@
 try:
     from tool_box.jira_tools.jira_get_tools import GetAtlassian
 except ModuleNotFoundError:
-    from atlassian_api_client.
+    from atlassian_api_client.tool_box.jira_tools.jira_get_tools import GetAtlassian
+
 
 class Organization(GetAtlassian):
     url = "/rest/servicedeskapi/organization"
@@ -18,7 +19,7 @@ class Organization(GetAtlassian):
         return response
 
     def find_org_by_searching_all_service_desks(self):
-        # TODO find out which service desk id we are using. Shoold i look accross all ids?
+        # TODO find out which service desk id we are using. Should i look accross all ids?
         pass
 
 
