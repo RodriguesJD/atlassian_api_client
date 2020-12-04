@@ -7,7 +7,6 @@ except ModuleNotFoundError:
 
 
 
-
 class CustomerPost(PostAtlassian):
     url = "/rest/servicedeskapi/customer"
 
@@ -19,7 +18,6 @@ class CustomerPost(PostAtlassian):
         )
 
 
-
 class OrganizationPost(PostAtlassian):
     url = "/rest/servicedeskapi/organization"
 
@@ -29,5 +27,19 @@ class OrganizationPost(PostAtlassian):
         response = self.post_atlassian()
         return response
 
+    def create_org(self, org_name):
+        self.data = json.dumps({"name": org_name})
+        return self.post_atlassian()
 
-CustomerPost().create_custormer("disp", "em")
+
+class ServiceDeskPost(PostAtlassian):
+    url = "/rest/servicedeskapi/servicedesk/"
+
+    def add_org_to_serivedesk_instance(self, service_desk_id, org_id):
+        self.url = f"{self.url}/{service_desk_id}/organization"
+        self.data = json.dumps({"organizationId": org_id})
+        return self.post_atlassian()
+
+
+
+

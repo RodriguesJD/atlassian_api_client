@@ -1,6 +1,8 @@
 import os
-
-from tool_box.jira_service_management.service_management_get_tools import Organization
+try:
+    from tool_box.jira_service_management.service_management_get_tools import Organization
+except ModuleNotFoundError:
+    from atlassian_api_client.tool_box.jira_service_management.service_management_get_tools import Organization
 
 
 class TestOrganization:

@@ -21,5 +21,3 @@ class Organization(GetAtlassian):
     def find_org_by_searching_all_service_desks(self):
         # TODO find out which service desk id we are using. Should i look accross all ids?
         pass
-
-
