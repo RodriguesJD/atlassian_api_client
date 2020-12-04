@@ -12,10 +12,11 @@ class CustomerPost(PostAtlassian):
 
     def create_custormer(self, display_name, email):
         self.data = json.dumps({
-            "displayName": "Fred F. User",
-            "email": "fred@example.com"
+            "displayName": display_name,
+            "email": email
         }
         )
+        return self.post_atlassian()
 
 
 class OrganizationPost(PostAtlassian):
