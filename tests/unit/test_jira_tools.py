@@ -3,9 +3,9 @@ import sys
 sys.path.insert(0, os.getcwd())
 
 try:
-    from tool_box.jira_tools import jira_get_tools
+    from tool_box.jira_tools. import jira_get_tools
 except ModuleNotFoundError:
-    from atlassian_api_client.tool_box import jira_get_tools
+    from atlassian_api_client.tool_box.jira_tools import jira_get_tools
 
 
 def test_get_all_users():
